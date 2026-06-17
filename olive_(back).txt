@@ -1,0 +1,54 @@
+<div style="position:relative">{{#Frequency}}<div class="freq-badge">#{{Frequency}}{{#Number}} · {{Number}}{{/Number}}</div>{{/Frequency}}<h1><span dir="rtl">{{Vowels}}</span></h1>
+<h3>{{Def1}}{{#PoS1}} <small>({{PoS1}})</small>{{/PoS1}}{{#Def2}}; {{Def2}}{{#PoS2}} <small>({{PoS2}})</small>{{/PoS2}}{{/Def2}}{{#Def3}}; {{Def3}} {{#PoS3}} <small>({{PoS3}})</small>{{/PoS3}}{{/Def3}}</h3>
+<hr id="answer">
+
+{{#Vowels1}}
+<div class="example-block">
+  <p><span dir="rtl">{{Vowels1}}</span></p>
+  <p class="eng">{{English1}}</p>
+</div>
+{{/Vowels1}}
+{{#Vowels2}}
+<div class="example-block">
+  <p><span dir="rtl">{{Vowels2}}</span></p>
+  <p class="eng">{{English2}}</p>
+</div>
+{{/Vowels2}}
+{{#Vowels3}}
+<div class="example-block">
+  <p><span dir="rtl">{{Vowels3}}</span></p>
+  <p class="eng">{{English3}}</p>
+</div>
+{{/Vowels3}}
+</div>
+
+{{tts ar speed=0.8:Word}}
+{{#Example1}}{{tts ar speed=0.8:Example1}}{{/Example1}}
+{{#Example2}}{{tts ar speed=0.8:Example2}}{{/Example2}}
+{{#Example3}}{{tts ar speed=0.8:Example3}}{{/Example3}}
+
+<div class="tts-src" style="display:none">{{Word}}</div>
+{{#Example1}}<div class="tts-src" style="display:none">{{Example1}}</div>{{/Example1}}
+{{#Example2}}<div class="tts-src" style="display:none">{{Example2}}</div>{{/Example2}}
+{{#Example3}}<div class="tts-src" style="display:none">{{Example3}}</div>{{/Example3}}
+
+<script>
+function playTTS() {
+  var texts = [];
+  document.querySelectorAll('.tts-src').forEach(function (el) {
+    var t = el.textContent.trim();
+    if (t) texts.push(t);
+  });
+  function speak(i) {
+    if (i >= texts.length) return;
+    var url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=ar&client=tw-ob&q=" + encodeURIComponent(texts[i]);
+    var audio = new Audio(url);
+    audio.play().catch(function (e) { console.log(e); });
+    audio.onended = function () { speak(i + 1); };
+    audio.onerror = function () { speak(i + 1); };
+  }
+  speak(0);
+}
+</script>
+
+<p><small><a class="src" href="https://dictionary.reverso.net/arabic-english/{{Word}}/forced">Reverso</a> | <a class="src" href="https://en.wiktionary.org/wiki/{{Word}}">Wiktionary</a></small></p>
