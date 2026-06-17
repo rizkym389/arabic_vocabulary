@@ -1,0 +1,25 @@
+<div id="translit-wrap" style="position:relative">
+{{#Frequency}}<div class="freq-badge">#{{Frequency}}{{#Number}} · {{Number}}{{/Number}}</div>{{/Frequency}}
+<h1><span dir="rtl">{{Word}}</span></h1>
+{{#Transliteration}}<p class="transliteration">{{Transliteration}}</p>{{/Transliteration}}<hr>
+<button class="translit-toggle transliteration" onclick="document.getElementById('translit-wrap').classList.toggle('show-translit')">Transliteration</button>
+
+{{#Example1}}
+<div class="example-block">
+  <p><span dir="rtl">{{Example1}}</span></p>
+  {{#Transliteration1}}<p class="transliteration">{{Transliteration1}}</p>{{/Transliteration1}}
+</div>
+{{/Example1}}
+{{#Example2}}
+<div class="example-block">
+  <p><span dir="rtl">{{Example2}}</span></p>
+  {{#Transliteration2}}<p class="transliteration">{{Transliteration2}}</p>{{/Transliteration2}}
+</div>
+{{/Example2}}
+{{#Example3}}
+<div class="example-block">
+  <p><span dir="rtl">{{Example3}}</span></p>
+  {{#Transliteration3}}<p class="transliteration">{{Transliteration3}}</p>{{/Transliteration3}}
+</div>
+{{/Example3}}
+</div>
